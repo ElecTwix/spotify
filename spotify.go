@@ -106,7 +106,7 @@ func (id *ID) String() string {
 // particular artist or playlist.
 type Followers struct {
 	// The total number of followers.
-	Count uint `json:"total"`
+	Count float32 `json:"total"`
 	// A link to the Web API endpoint providing full details of the followers,
 	// or the empty string if this data is not available.
 	Endpoint string `json:"href"`
@@ -222,7 +222,7 @@ func (c *Client) execute(req *http.Request, result interface{}, needsStatus ...i
 				// If the context is cancelled, return the original error
 			case <-time.After(retryDuration(resp)):
 				continue
-                        }
+			}
 		}
 		if resp.StatusCode == http.StatusNoContent {
 			return nil
